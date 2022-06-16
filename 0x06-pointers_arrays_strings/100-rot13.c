@@ -1,31 +1,28 @@
 #include "main.h"
-
 /**
-* leet - function that encodes a string into 1337
-* @str: string to encode
-*
-* Return: pointer to encoded str
-*/
-char *leet(char *str)
+ * rot13 - encodes a string using rot13
+ * @s: input string.
+ * Return: the pointer to dest.
+ */
+
+char *rot13(char *s)
 {
-	/* conversion tables */
-	char letters[] = "aeotl";
-	char values[] = "43071";
+	int count = 0, i;
+	char alphabet[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	char rot13[] = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM";
 
-	int i;
-	int j;
-
-	for (i = 0; str[i] != '\0'; i++)
+	while (*(s + count) != '\0')
 	{
-		for (j = 0; letters[j] != '\0'; j++)
+		for (i = 0; i < 52; i++)
 		{
-			if (str[i] == letters[j] || str[i] == letters[j] - 32)
+			if (*(s + count) == alphabet[i])
 			{
-				str[i] = values[j];
+				*(s + count) = rot13[i];
 				break;
 			}
 		}
+		count++;
 	}
 
-	return (str);
+	return (s);
 }
