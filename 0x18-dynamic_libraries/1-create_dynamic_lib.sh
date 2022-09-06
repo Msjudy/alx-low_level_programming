@@ -1,4 +1,2 @@
-#!bin/bash
-gcc -c -fpic *.c
-gcc -shared -o liball.so *.o
-gcc -shared -o libdynamic.so *.o
+#!/bin/bash
+gcc -g -fPIC -Wall -Werror -Wextra -pedantic *.c -shared -o liball.so
